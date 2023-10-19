@@ -23,10 +23,10 @@
    "-DARDUINO_ARCH_AVR",
    "-IC:\\Users\\thoma\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
    "-IC:\\Users\\thoma\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\standard",
-   "c:\\Users\\thoma\\OneDrive\\Skrivebord\\Ingeniørprojekt\\Github\\Zumo-Bil\\.arduino\\output\\sketch\\test.ino.cpp",
+   "C:\\Users\\thoma\\OneDrive\\Skrivebord\\Ingeniørprojekt\\Github\\Zumo-Bil\\.arduino\\output\\sketch\\test.ino.cpp",
    "-o",
-   "c:\\Users\\thoma\\OneDrive\\Skrivebord\\Ingeniørprojekt\\Github\\Zumo-Bil\\.arduino\\output\\sketch\\test.ino.cpp.o"
+   "C:\\Users\\thoma\\OneDrive\\Skrivebord\\Ingeniørprojekt\\Github\\Zumo-Bil\\.arduino\\output\\sketch\\test.ino.cpp.o"
   ],
-  "file": "c:\\Users\\thoma\\OneDrive\\Skrivebord\\Ingeniørprojekt\\Github\\Zumo-Bil\\.arduino\\output\\sketch\\test.ino.cpp"
+  "file": "C:\\Users\\thoma\\OneDrive\\Skrivebord\\Ingeniørprojekt\\Github\\Zumo-Bil\\.arduino\\output\\sketch\\test.ino.cpp"
  }
 ]
