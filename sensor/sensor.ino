@@ -1,6 +1,5 @@
-# 1 "C:\\Users\\thoma\\OneDrive\\Skrivebord\\Ingeniørprojekt\\Github\\Zumo-Bil\\sensor\\sensor.ino"
-# 2 "C:\\Users\\thoma\\OneDrive\\Skrivebord\\Ingeniørprojekt\\Github\\Zumo-Bil\\sensor\\sensor.ino" 2
-# 3 "C:\\Users\\thoma\\OneDrive\\Skrivebord\\Ingeniørprojekt\\Github\\Zumo-Bil\\sensor\\sensor.ino" 2
+#include <Arduino.h>
+#include <Servo.h>
 
 //Til servo
 Servo servo_lower;
@@ -22,8 +21,8 @@ const int kraftSensorPin = A0;
 float turnON = 200;
 
 //Til sensor
-
-
+#define trigPin 2  //Definerer trig og echo pinner
+#define echoPin 3
 
 long varighet; //Variabel varighet for tid mellom sending og mottak av lydbølger
 int avstand; //Avstand variabelen skal kalkuleres til avstand ved bruk av varighet
@@ -36,18 +35,18 @@ int avstand; //Avstand variabelen skal kalkuleres til avstand ved bruk av varigh
 ////////////////////////Funksjons///////////////////////////
 ////////////////////////////////////////////////////////////
 void avstandSensor(){
-  digitalWrite(2 /*Definerer trig og echo pinner*/, 0x0);
+  digitalWrite(trigPin, LOW);
   delayMicroseconds(5);
-  digitalWrite(2 /*Definerer trig og echo pinner*/, 0x1);
+  digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
-  digitalWrite(2 /*Definerer trig og echo pinner*/, 0x0);
+  digitalWrite(trigPin, LOW);
 
-  varighet = pulseIn(3, 0x1); //pulseIn er en funksjon tar tiden når pin går fra LOW til HIGH frem til den blir LOW igjen
-  avstand = varighet * 0.034 / 2; //Vi bruker 0.034 fordi det er lydens hastighet, og deler på to fordi vi får avstanden fram og tilbake, og vi vil bare ha avstanden fram
+  varighet = pulseIn(echoPin, HIGH);  //pulseIn er en funksjon tar tiden når pin går fra LOW til HIGH frem til den blir LOW igjen
+  avstand = varighet * 0.034 / 2;  //Vi bruker 0.034 fordi det er lydens hastighet, og deler på to fordi vi får avstanden fram og tilbake, og vi vil bare ha avstanden fram
   Serial.print(avstand);
   Serial.println(" cm");
 
-  delay(50);
+  delay(50);        
   //Verdiene vi hadde fått ut av denne kunne vi f.eks brukt til å regulere farten til Zumo bilen.
 }
 
@@ -58,8 +57,8 @@ void lower_body_light_tracker(){
     int bottom_right_sensor = analogRead(bottom_right_pin);
 
     int left_side = (top_left_sensor + bottom_left_sensor);
-    int right_side = (top_right_sensor + bottom_right_sensor);
-
+    int right_side =  (top_right_sensor + bottom_right_sensor);    
+    
     if(left_side > right_side && 180 > angle > 0){
         angle++;
         servo_lower.write(angle);
@@ -84,9 +83,9 @@ void angle_reset(){
 float readAvarage(){ // leser av sensoren 3 ganger og summerer verdiene og deler på 3 for å få gjennomsnittsmålingen over 3 avlesninger
   int sum = 0;
   for (int i = 0; i < 5; i++){
-     sum += analogRead(kraftSensorPin);
+    	sum += analogRead(kraftSensorPin);
   }
-  int avarage = sum/3;
+  int avarage = sum/3; 
   return avarage;
 }
 
@@ -94,9 +93,9 @@ float readAvarage(){ // leser av sensoren 3 ganger og summerer verdiene og deler
 void kraftSensor(){
      Serial.println(analogRead(kraftSensorPin));
   if (readAvarage() > turnON){
-    digitalWrite(redLed, 0x1);
+    digitalWrite(redLed, HIGH);
   }else {
-    digitalWrite(redLed, 0x0);
+    digitalWrite(redLed, LOW);
   }
 }
 
@@ -106,11 +105,11 @@ void kraftSensor(){
 ////////////////////////////////////////////////////////////
 void setup(){
     Serial.begin(9600);
-    pinMode(2 /*Definerer trig og echo pinner*/, 0x1);
-    pinMode(3, 0x0);
-    pinMode(redLed, 0x1);
+    pinMode(trigPin, OUTPUT);
+    pinMode(echoPin, INPUT);
+    pinMode(redLed, OUTPUT);
 
-    pinMode(kraftSensorPin, 0x0);
+    pinMode(kraftSensorPin, INPUT);
     Serial.begin(9600);
 
     servo_lower.attach(servo_pin_lower);

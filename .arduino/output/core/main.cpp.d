@@ -1,5 +1,5 @@
-C:\Users\thoma\OneDrive\Skrivebord\Ingeniørprojekt\Github\Zumo-Bil\.arduino\output\sketch\test.ino.cpp.o: \
- C:\Users\thoma\OneDrive\Skrivebord\Ingeniørprojekt\Github\Zumo-Bil\.arduino\output\sketch\test.ino.cpp \
+C:\Users\thoma\OneDrive\Skrivebord\Ingeniørprojekt\Github\Zumo-Bil\.arduino\output\core\main.cpp.o: \
+ C:\Users\thoma\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino\main.cpp \
  C:\Users\thoma\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino/Arduino.h \
  C:\Users\thoma\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino/binary.h \
  C:\Users\thoma\AppData\Local\Arduino15\packages\arduino\hardware\avr\1.8.6\cores\arduino/WCharacter.h \
